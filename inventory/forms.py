@@ -13,7 +13,7 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
 
 
-class InventoryItemFor(forms.ModelForm):
+class InventoryItemForm(forms.ModelForm):
     category = forms.ModelChoiceField(queryset=Category.objects.all(), initial=0)
     class Meta:
         model = InventoryItem
