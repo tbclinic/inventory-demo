@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row">
     <div class="col-md-10 col-12 mx-auto mt-5">
-        <div class="flex justify-content-end">
+        <div class="d-flex justify-content-end">
             <a href="#" class="btn btn-primary">+</a>
         </div>
 
@@ -19,15 +19,24 @@
                 </tr>
             </thead>
             <tbody>
+                {% if items|length == 0 %}
                 <tr>
                     <th scope="row">-</th>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td></td>
                 </tr>
+            {% endif %}
+            {% for item in items %}
+                <tr>
+                    <th scope="row">{{ item.id }}</th>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.category.name }}</td>
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
     </div>
