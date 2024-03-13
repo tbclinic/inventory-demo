@@ -48,7 +48,11 @@
                 <tr>
                     <th scope="row">{{ item.id }}</th>
                     <td>{{ item.name }}</td>
-                    <td>{{ item.quantity }}</td>
+                    {% if item.id in low_inventory_ids %}
+                        <td class="text-danger"><strong>{{ item.quantity }}</strong></td>
+                    {% else %}
+                        <td class="text-success"><strong>{{ item.quantity }}</strong></td>
+                    {% endif %}
                     <td>{{ item.category.name }}</td>
                     <td><a href="{% url 'edit-item' item.id %}" class="btn btn-outline-secondary">Edit</a></td>
                     <td><a href="{% url 'delete-item' item.id %}" class="btn btn-secondary">Delete</a></td>
